@@ -12,11 +12,27 @@ import "@openzeppelin/contracts@4.8.2/utils/Counters.sol";
 
 /// @custom:security-contact ncmtriet@gmail.com
 contract NFTDAO is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Burnable, Ownable, EIP712, ERC721Votes {
+
+    struct TokenInfo {
+        IERC20 paytoken;
+        uint256 costvalue;
+    }
+
+    TokenInfo[] public AllowedCrypto;
+    
+    using Strings for uint256;
+    string public baseURI;
+    string public baseExtension = ".json";
+    uint256 public cost = 0.001 ether;
+    uint256 public maxSupply = 1000;
+    uint256 public maxMintAmount = 5;
+    bool public paused = false;
+    
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIdCounter;
 
-    constructor() ERC721("NFT DAO", "NFTD") EIP712("NFT DAO", "1") {}
+    constructor() ERC721("Investment DAO", "ID") EIP712("NFT DAO", "1") {}
 
     function safeMint(address to, string memory uri) public onlyOwner {
         uint256 tokenId = _tokenIdCounter.current();
