@@ -73,18 +73,6 @@ contract NFTStaking is Ownable, IERC721Receiver {
       _claim(msg.sender, tokenIds, true);
   }
 
-/*
-@Net2Dev - Follow me on Youtube , Tiktok, Instagram
-TOKEN REWARDS CALCULATION
-MAKE SURE YOU CHANGE THE VALUE ON BOTH CLAIM AND EARNINGINFO FUNCTIONS.
-Find the following line and update accordingly based on how much you want 
-to reward users with ERC-20 reward tokens.
-I hope you get the idea based on the example.
-rewardmath = 100 ether .... (This gives 1 token per day per NFT staked to the staker)
-rewardmath = 200 ether .... (This gives 2 tokens per day per NFT staked to the staker)
-rewardmath = 500 ether .... (This gives 5 tokens per day per NFT staked to the staker)
-rewardmath = 1000 ether .... (This gives 10 tokens per day per NFT staked to the staker)
-*/
 
   function _claim(address account, uint256[] calldata tokenIds, bool _unstake) internal {
     uint256 tokenId;
